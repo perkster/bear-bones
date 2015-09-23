@@ -1,0 +1,1522 @@
+@charset "UTF-8";
+/*!
+Theme Name: 	Bear Bones
+Description: 	Bear Bones theme by Perkster Solutions please see readme file
+Version:		1.0.1
+Notes:  		This theme was developed by Wendy Shoef of http://www.perkstersolutions.com
+				Perkster Solutions works with designers in helping them bring their work online!
+				Copy this file and the scss folder to your own project to customize.
+*/
+/*-------------------- Bear Bones / BEAR BONES --------------------*/
+/********************  Bear Bones / Base / COLORS ******************/
+/*
+$form-font-family		:	map-get($bb-font, family);
+$form-font-color				: #666!default;
+$form-input-padding			:  0.5em!default;
+$form-input-background-color	:	white!default;
+$form-input-border-color		:	$whiteIsabelline!default;
+$form-input-border-width		:	1px!default;
+$form-input-border-style		:	solid!default;
+$form-input-border-color-hover 		: darken($form-input-border-color, 10%)!default;
+$form-input-border-color-focus 		: darken($form-input-border-color, 25%)!default;
+$form-placeholder-color 			: $whiteEggshell!default;
+*/
+/*
+// ------------- ?? ------------- //
+$bb-components- : true!default;
+$bb-test- : false!default;
+$bb--default: (
+)!default;
+$bb--custom: ()!default;
+$bb-: map-extend($bb--default, $bb--custom, true);
+*/
+/********************  Bear Bones / Base / FOUNDATION ******************/
+/**
+ * Set the global `box-sizing` state to `border-box`.
+ *
+ * css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
+ * paulirish.com/2012/box-sizing-border-box-ftw
+ */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/**
+ * Based on http://jaydenseric.com/blog/forget-normalize-or-resets-lay-your-own-css-foundation 
+ * Too many problems with normalize & reset throwing things off later.
+ * Some things taken directly from normalize, too
+ * No font-sizes are done here as they are all handled in one place to make it easier to override later
+ */
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+blockquote,
+.quote--outside,
+.quote--inside,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11 and Firefox.
+ * Correct `block` display not defined for `main` in IE 11. * 
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+  display: none;
+}
+
+/** 
+ * Links
+ * 1. Remove the gray background color from active links in IE 10.
+ * 2. 99% of websites don't use this anymore
+ * 3. Color is explicitly declared later on. Better to have links default to 
+ *	  what parent is as they often are now text with images that link to other pages.
+ * 4. Most transitions are found on links. 3s is standard. Of course can be overriden or variable changed
+ */
+a {
+  background: transparent;
+  /*1*/
+  text-decoration: none;
+  /*2*/
+  transition: 0.3s;
+}
+
+/**
+ * 1. Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ * 2. Give a help cursor to elements that give extra info on `:hover`.
+ */
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 0.75em;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/**
+ * Remove underlines from potentially troublesome elements.
+ */
+u,
+ins {
+  text-decoration: none;
+}
+
+/**
+ * Apply faux underlines to inserted text via `border-bottom`.
+ */
+ins {
+  border-bottom: 1px solid;
+}
+
+/**
+ * Standard image issues. 
+ * 1. Can't think of any reason where img should be outside of browser. Can always be changed if needed for some reason
+ * 2. make image height proportionate since width is being adjusted
+ * 3. most of the time images don't have a border and when they do, its customized
+ */
+img {
+  max-width: 100%;
+  /*1*/
+  height: auto;
+  /*2*/
+  border: 0
+  /*3*/
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0
+  /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0
+  /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+	/**
+	 * Define consistent border, margin, and padding.
+	 *
+
+	fieldset {
+	  border: 1px solid #c0c0c0;
+	  margin: 0 2px;
+	  padding: 0.35em 0.625em 0.75em;
+	}
+
+	/**
+	 * 1. Correct `color` not being inherited in IE 8/9/10/11.
+	 * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+	 */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0
+  /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+/*************** END FOUNDATION ****************/
+.topbar-wrapper:after, .second-topbar-wrapper:after, .footer-wrapper:after, .content-wrapper:after, .container-wrapper:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/********************  Bear Bones / Base / ACCESSIBILITY ******************/
+.accessibility,
+.visuallyhidden, .screen-reader-text, .skiplink, .assistive-text, .menu-social-test li a span {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+.accessibility:focus,
+.visuallyhidden:focus, .screen-reader-text:focus, .skiplink:focus, .assistive-text:focus, .menu-social-test li a span:focus {
+  position: relative;
+  width: auto;
+  height: auto;
+}
+
+input:focus + [role="tooltip"] {
+  display: block;
+  position: absolute;
+  top: 100%;
+}
+
+/********************  Bear Bones / Objects / LAYOUT ******************/
+.topbar-wrapper, .second-topbar-wrapper, .footer-wrapper, .content-wrapper, .container-wrapper {
+  width: 100%;
+}
+
+.topbar, .second-topbar, .footer, .content, .content-inner {
+  margin: 0 auto;
+}
+@media (min-width: 1101px) {
+  .topbar, .second-topbar, .footer, .content, .content-inner {
+    width: 80%;
+    max-width: 1100px;
+  }
+}
+
+/********************  Bear Bones / Base / TEXTURE ******************/
+blockquote, .quote--outside, .quote--inside, .sticky, .island, .islet {
+  /* Brand Round */
+  border-radius: 6px;
+}
+
+/********************  Bear Bones / Base / WORDPRESS-REQUIRED ******************/
+/* =WordPress Core http://codex.wordpress.org/CSS#WordPress_Generated_Classes */
+.alignnone, .wp-caption.alignnone {
+  margin: 0;
+}
+
+.aligncenter,
+div.aligncenter {
+  display: block;
+  margin: 0 auto;
+}
+
+.alignright, .wp-caption.alignright {
+  float: right;
+}
+
+.alignleft, .wp-caption.alignleft {
+  float: left;
+}
+
+a img.alignright {
+  float: right;
+}
+
+a img.alignleft {
+  float: left;
+}
+
+a img.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Caption */
+.wp-caption {
+  max-width: 96%;
+  /* Image does not overflow the content area */
+  padding: 5px 3px 10px;
+  text-align: center;
+}
+
+.wp-caption img {
+  border: 0 none;
+  height: auto;
+  margin: 0;
+  max-width: 98.5%;
+  padding: 0;
+  width: auto;
+}
+
+/* Post */
+.gallery-caption {
+  margin-left: 0;
+}
+
+.bypostauthor {
+  border-top: thick solid #F6921E;
+}
+
+/********************* Bear Bones / Typography / TYPOGRAPHY ********************/
+html {
+  font: 18px/1.35rem "Playfair Display", Sans-serif;
+  line-height: 1.35;
+}
+@media screen and (max-width: 320px) {
+  html {
+    /* Phone */
+    font: 16px/1.35rem "Playfair Display", Sans-serif;
+  }
+}
+@media screen and (min-width: 321px) and (max-width: 768px) {
+  html {
+    /* Tablet */
+    font: 15px/1.35rem "Playfair Display", Sans-serif;
+  }
+}
+
+body {
+  color: black;
+}
+
+a {
+  color: #999999;
+  text-decoration: none;
+}
+a:hover {
+  color: #111;
+}
+a:focus {
+  outline: thin dotted;
+}
+
+/********************  Bear Bones / Typography / VERTICAL RHYTHM ******************/
+hgroup,
+ul, ol, dl,
+blockquote,
+.quote--outside,
+.quote--inside, p, address,
+table, figure,
+pre,
+.media, .sticky, .island, .islet {
+  /* %bb-vr */
+  margin-bottom: 24.3px;
+  margin-bottom: 1.35rem;
+}
+
+.sticky > :nth-child(n), .island > :nth-child(n), .quote--inside > :nth-child(n), .islet > :nth-child(n) {
+  /* %bb-vr--half */
+  margin-bottom: 12.15px;
+  margin-bottom: 0.675rem;
+}
+
+pre {
+  /* %bb-vr--small */
+  margin-bottom: 8.0919px;
+  margin-bottom: 0.44955rem;
+}
+
+/********************  Bear Bones / Typography / TYPE SCALE ******************/
+h1, .h1 {
+  font-size: 2.25rem;
+}
+
+h2, .h2 {
+  font-size: 2rem;
+}
+
+h3, .h3 {
+  font-size: 1.5rem;
+}
+
+h4, .h4 {
+  font-size: 1.25rem;
+}
+
+h5, .h5 {
+  font-size: 0.9rem;
+}
+
+h6, .h6 {
+  font-size: 0.875rem;
+}
+
+/********************  Bear Bones / Typography / HEADINGS ******************/
+/********************* Bear Bones / Typography / TEXT CLASSES ********************/
+/* Utility classes */
+.wp-caption p.wp-caption-text {
+  /* %smallprint  */
+  font-size: 0.75em;
+}
+
+/********************* Bear Bones / Typography / CODE ********************/
+code, kbd, pre, samp {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+code {
+  background-color: #ffe2e2;
+  border-radius: 3px;
+  color: #ec3c06;
+  font-size: 90%;
+  padding: 2px 4px;
+}
+
+kbd {
+  background-color: #8A8C8E;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+  color: white;
+  font-size: 90%;
+  padding: 2px 4px;
+}
+
+pre {
+  display: block;
+  unicode-bidi: embed;
+  word-break: break-all;
+  word-wrap: break-word;
+  font-size: 90%;
+  color: #8A8C8E;
+  background-color: #D0EAED;
+  border: thin solid #B2D5EA;
+  line-height: 0.5em;
+  margin: 1em;
+  padding: 1em
+  /*padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;*/
+}
+pre > :nth-child(n) {
+  margin: 0;
+  padding: 0;
+}
+
+var {
+  font-style: italic;
+}
+
+/********************  Bear Bones / Html / FORMS ******************/
+input, textarea, select {
+  max-width: 100%;
+}
+
+/********************  Bear Bones / Html / IMAGES ******************/
+figcaption {
+  display: block;
+  font-style: italic;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/********************  Bear Bones / Html / LISTS ******************/
+/**
+ * Lists 
+ * 1. Remove padding
+ * 2. Set default margin-left so it lines up with paragraph. Default is 40px which is too much; easier to add in later for the few cases that will use it. Some reset/normalize remove completely, but user normally expects lists to have bullet points. Especially inside of blog posts. 
+ * 3. Remove vertical spacing from nested lists.
+ */
+ul, ol {
+  padding: 0;
+  margin-left: 32.805px;
+  margin-left: 1.35em;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-position: inside;
+}
+ul li, ol li {
+  list-style-position: outside;
+}
+
+li > ul,
+li > ol {
+  margin-bottom: 0;
+}
+
+/********************  Bear Bones / Html / QUOTES ******************/
+/** Inline quotes. */
+q {
+  quotes: "“" "”" "‘" "’";
+  hanging-punctuation: first;
+}
+q:before {
+  content: "“";
+  content: open-quote;
+}
+q:after {
+  content: "”";
+  content: close-quote;
+}
+q q:before {
+  content: "‘";
+  content: open-quote;
+}
+q q:after {
+  content: "’";
+  content: close-quote;
+}
+
+blockquote, .quote--outside, .quote--inside {
+  background-color: #f9f9f9;
+  border: thin solid #ccc;
+  margin: 1.35em;
+  padding: 0.5em;
+}
+blockquote p, .quote--outside p, .quote--inside p, blockquote code, .quote--outside code, .quote--inside code, blockquote cite, .quote--outside cite, .quote--inside cite, blockquote .source, .quote--outside .source, .quote--inside .source {
+  display: block;
+}
+blockquote > :last-child, .quote--outside > :last-child, .quote--inside > :last-child {
+  margin-bottom: 0;
+}
+
+blockquote p, .quote--outside p, .quote--inside p, cite, .source {
+  display: block;
+}
+
+.quote--outside {
+  border-left: 3px solid black;
+}
+
+.quote--inside {
+  background-color: #f9f9f9;
+  border-style: solid;
+  border-left-width: 0.5em;
+  border-top-width: thin;
+  border-right-width: thin;
+  border-bottom-width: thin;
+  border-color: #ccc;
+}
+.quote--inside p {
+  display: inline-block;
+}
+
+.quote--outside {
+  margin-left: 2.95em;
+  margin-right: 0;
+}
+.quote--outside:before {
+  display: block;
+  height: 1rem;
+  content: "“";
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 4em;
+  font-style: italic;
+  margin-top: -1rem;
+  margin-right: 0.25em;
+  margin-left: -3.25rem;
+  color: #ccc;
+}
+
+.quote--inside {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.quote--inside p {
+  display: inline;
+}
+.quote--inside:before {
+  content: "“";
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3em;
+  font-style: italic;
+  margin-top: -1rem;
+  margin-right: 0.75rem;
+  margin-left: 0;
+  color: #999;
+  line-height: 0.1em;
+  vertical-align: -0.4em;
+}
+
+/*Quote Test*/
+/********************  Bear Bones / HTML / RULES ******************/
+hr {
+  border-top: 1px solid #C2B38D;
+}
+
+.hr--gradient {
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #C2B38D inset;
+}
+
+.hr--gradient-horizontal {
+  height: 1px;
+  border: 0;
+  background-color: white;
+  background-image: linear-gradient(to right,white, #C2B38D, white);
+}
+
+.hr--heart {
+  border: 0;
+  border-top: 4px double #C2B38D;
+  text-align: center;
+}
+.hr--heart:after {
+  content: '\002665';
+  display: inline-block;
+  position: relative;
+  top: -15px;
+  padding: 0 10px;
+  background: white;
+  color: #C2B38D;
+  font-size: 18px;
+}
+
+.hr--scissors {
+  border: 0;
+  border-top: 1px dashed #C2B38D;
+}
+.hr--scissors:after {
+  content: '\002702';
+  display: inline-block;
+  position: relative;
+  top: -12px;
+  left: 40px;
+  padding: 0 3px;
+  background: white;
+  color: #C2B38D;
+  font-size: 18px;
+}
+
+.hr--ornament {
+  border: 0;
+  border-top: 1px solid #C2B38D;
+  text-align: center;
+}
+.hr--ornament:after {
+  content: '§';
+  display: inline-block;
+  position: relative;
+  top: -14px;
+  padding: 0 10px;
+  background: white;
+  color: #C2B38D;
+  font-size: 18px;
+  -webkit-transform: rotate(60deg);
+  -ms-transform: rotate(60deg);
+      transform: rotate(60deg);
+}
+
+.hr--grain {
+  height: 30px;
+  border: 0;
+  border-style: solid;
+  border-color: #C2B38D;
+  border-width: 1px 0 0 0;
+  border-radius: 20px;
+}
+.hr--grain:before {
+  content: '';
+  display: block;
+  height: 30px;
+  margin-top: -31px;
+  border-color: #C2B38D;
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  border-radius: 20px;
+}
+
+/********************  Bear Bones / Objects / BUTTONS ******************/
+button,
+.button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  background-color: #7BA1FF;
+  border: 0;
+  color: white;
+  line-height: 1.35em;
+  padding: 0.25em 0.5em;
+  transition: 0.2s ease-in-out;
+}
+button:hover,
+.button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+  background-color: #AED1FF;
+  border: 0;
+}
+
+span.button {
+  vertical-align: baseline;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0 0.25em;
+}
+
+/********************  Bear Bones / Objects / ISLAND ******************/
+.sticky, .island, .quote--inside, .islet {
+  display: block;
+}
+.sticky code, .island code, .quote--inside code, .islet code {
+  display: inline;
+}
+.sticky > :last-child, .island > :last-child, .quote--inside > :last-child, .islet > :last-child {
+  margin-bottom: 0;
+}
+
+.sticky, .island {
+  padding: 1.35em;
+}
+
+.quote--inside, .islet {
+  padding: 0.5em;
+}
+
+/********************  Bear Bones / Objects / MEDIA STUBORNELLA ******************/
+/********************  Bear Bones / Objects / NAV ******************/
+.topbar .sub-menu, .second-topbar .sub-menu {
+  display: none;
+  float: left;
+  position: absolute;
+  z-index: 99999;
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+.topbar li:hover > .sub-menu, .second-topbar li:hover > .sub-menu {
+  display: block;
+}
+
+.test-nav, .second-topbar .widget-1 {
+  display: table;
+  table-layout: auto;
+  width: 100%;
+}
+.test-nav > ul, .second-topbar .widget-1 > ul {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  padding-left: 0;
+  margin-left: 0;
+}
+.test-nav > ul > li, .second-topbar .widget-1 > ul > li {
+  display: table-cell;
+  text-align: center;
+}
+.test-nav > ul > li > a, .second-topbar .widget-1 > ul > li > a {
+  width: 100%;
+  display: block;
+}
+
+.test-nav--justified, .topbar .widget-1 {
+  margin: 0 auto;
+}
+.test-nav--justified > ul, .topbar .widget-1 > ul {
+  text-align: justify;
+  overflow: hidden;
+  padding: 0;
+}
+.test-nav--justified > ul:after, .topbar .widget-1 > ul:after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+.test-nav--justified > ul > li, .topbar .widget-1 > ul > li {
+  display: inline-block;
+}
+
+.test-nav--justified {
+  margin-bottom: -24.3px;
+}
+
+/********************  Bear Bones / Objects / SIMPLE GRID ******************/
+/** 
+ * http://css-tricks.com/dont-overthink-it-grids/
+ * https://github.com/mourner/dead-simple-grid
+ * http://mourner.github.io/dead-simple-grid/
+ * Dead Simple Grid (c) 2012 Vladimir Agafonkin 
+ */
+.second-topbar .widget-1, .second-topbar .widget-2 {
+  float: left;
+}
+
+/********************  Bear Bones / Objects / BB jQUERY TABS ******************/
+/* Bear Bones Jquery Tabs
+ * Uses jquery-ui-core, jquery-tabs
+====================================*/
+/********************  Bear Bones / Components / HEADERS ******************/
+.icon-header--left i, .icon-header-group--left i, .icon-header--test i, .icon-header--center i, .image-header--left, .image-header-group--left, .image-header--test {
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+/* 
+%bb- {
+	@extend %bb-;
+
+}
+*/
+.icon-header--left i, .icon-header-group--left i, .icon-header--test i, .icon-header--left div, .icon-header-group--left div, .icon-header--test div {
+  display: table-cell;
+  vertical-align: middle;
+}
+.icon-header--left div, .icon-header-group--left div, .icon-header--test div {
+  padding-left: 1.0125em;
+}
+
+.icon-header--center {
+  text-align: center;
+  margin: 2.7em 0 1.35em;
+}
+.icon-header--center i {
+  float: none;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0 auto 0.3375em;
+}
+
+.image-header--left img, .image-header-group--left img, .image-header--test img {
+  margin-top: 0.165em;
+  width: 2.5em;
+  vertical-align: middle;
+}
+.image-header--left p:nth-of-type(1), .image-header-group--left p:nth-of-type(1), .image-header--test p:nth-of-type(1), .image-header--left div:first-of-type, .image-header-group--left div:first-of-type, .image-header--test div:first-of-type {
+  display: inline-block;
+}
+
+.image-header--center {
+  text-align: center;
+  margin: 2.7em 0 1.35em;
+}
+
+.icon-header--center i {
+  font-size: 2.5em;
+}
+.icon-header--center p {
+  font-size: 0.9em;
+  margin-bottom: 0;
+}
+.icon-header--center p:first-of-type {
+  font-size: 1.5em;
+}
+.icon-header--center p:nth-of-type(2) {
+  font-size: 1em;
+}
+
+.icon-header--left i {
+  font-size: 1.5em;
+}
+.icon-header--left p {
+  font-size: 0.9em;
+  margin-bottom: 0;
+}
+.icon-header--left p:first-of-type {
+  font-size: 1.5em;
+}
+.icon-header--left p:nth-of-type(2) {
+  font-size: 1em;
+}
+
+.icon-header-group--left i {
+  font-size: 1.5em;
+}
+.icon-header-group--left p {
+  font-size: 0.9em;
+  margin-bottom: 0;
+}
+.icon-header-group--left div > p:first-of-type {
+  font-size: 1.5em;
+}
+.icon-header-group--left div > p:nth-of-type(2) {
+  font-size: 1em;
+}
+
+.icon-header--test i {
+  font-size: 3em;
+}
+.icon-header--test p {
+  margin-bottom: 0;
+}
+.icon-header--test p:first-of-type {
+  font-size: 1.75em;
+}
+
+.image-header--center p {
+  font-size: 0.9em;
+  margin-bottom: 0;
+}
+.image-header--center p:first-of-type {
+  font-size: 1.5em;
+}
+.image-header--center p:nth-of-type(2) {
+  font-size: 1em;
+}
+
+.image-header--left p {
+  font-size: 0.9em;
+  margin-bottom: 0;
+}
+.image-header--left p:first-of-type {
+  font-size: 1.5em;
+}
+.image-header--left p:nth-of-type(2) {
+  font-size: 1em;
+}
+
+.image-header-group--left p {
+  font-size: 0.9em;
+  margin-bottom: 0;
+}
+.image-header-group--left div > p:first-of-type {
+  font-size: 1.5em;
+}
+.image-header-group--left div > p:nth-of-type(2) {
+  font-size: 1em;
+}
+
+.image-header--test p {
+  margin-bottom: 0;
+}
+.image-header--test p:first-of-type {
+  font-size: 1.75em;
+}
+
+/************ Bear Bones / Components / REVOLUTION SLIDER ***********/
+.tp-bullets.custom .bullet {
+  cursor: pointer;
+  display: inline-block;
+  background-color: white;
+  height: 1em;
+  width: 1em;
+  border: 0;
+  margin: 0.25em;
+}
+.tp-bullets.custom .bullet.selected {
+  background-color: #7C7C7C;
+}
+
+/*
+.tp-leftarrow.custom {/* custom styles *}
+.tp-rightarrow.custom {/* custom styles *}
+.tp-bullets.custom .bullet {
+	/* custom styles *
+	background-color: white;
+	display: inline-block;
+	margin-right: 7px;
+	width: 1em;
+	height: 1em;
+	&:hover {
+		background-color: $light-green;
+	}
+	&.selected {
+		background-color: $accent-color;
+	}
+}
+*
+.rev_slider {
+	div {
+		text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.9);
+	}
+	.btn--call-to-action {
+		color: white;
+		display: block;
+		height: 100%;
+		width: 100%;
+		padding: 1em 1.5em!important;
+		text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.9);
+		&:hover {
+			background-color: $accent-color;
+			color: white;
+			text-shadow: none;
+		}
+	}
+	
+}*/
+.tp-caption a {
+  color: black;
+}
+.tp-caption a:hover {
+  color: #C2B38D;
+}
+
+/********************  Bear Bones / Components / SEARCH ******************/
+.searchform-input-wrapper:after {
+  font-family: FontAwesome;
+  content: "";
+  position: absolute;
+  top: 0;
+}
+
+.searchform-input-wrapper {
+  position: relative;
+}
+.searchform-input-wrapper:after {
+  right: 0;
+  padding-right: 0.25em;
+}
+
+/********************  Bear Bones / Components / SOCIAL ******************/
+.menu-social-test .fa:before {
+  padding: 0.28em;
+}
+.menu-social-test li {
+  font-size: 1em;
+  width: 1.56em;
+}
+.menu-social-test li a {
+  margin-left: -1.56em;
+  display: inline-block;
+  width: 1.56em;
+  height: 1em;
+}
+.menu-social-test li {
+  color: white;
+}
+.menu-social-test li:hover {
+  color: #AED1FF;
+}
+
+/********************  Bear Bones / Layouts / Topbar ******************/
+/*@if (map-deep-get($bb-topbar, 'topbar', 'full') ) {
+	.topbar-wrapper {
+		@extend %bb-full-width-wrapper;
+		background-color: map-deep-get($bb-topbar, 'topbar', 'bgc');
+	}
+	.topbar {
+		@extend %bb-full-width-inner;
+	}
+} */
+.topbar-wrapper {
+  height: 2em;
+  padding: 0.25em 0;
+  background-color: black;
+}
+
+.topbar {
+  color: white;
+  background-color: black;
+}
+.topbar a {
+  color: white;
+}
+.topbar a:hover {
+  color: #EDEDED;
+}
+.topbar ul {
+  margin-bottom: 0;
+}
+
+/********* Second Topbar *********/
+/*@if (map-deep-get($bb-topbar, 'second', 'full') ) {
+	.second-topbar-wrapper {
+		@extend %bb-full-width-wrapper;
+		background-color: map-deep-get($bb-topbar, 'second', 'bgc');
+	}
+	.second-topbar {
+		@extend %bb-full-width-inner;
+	}
+}*/
+.second-topbar-wrapper {
+  height: 2em;
+  padding: 0.25em 0;
+  background-color: #8A8C8E;
+}
+
+.second-topbar {
+  color: white;
+  background-color: #8A8C8E;
+}
+.second-topbar a {
+  color: white;
+}
+.second-topbar a:hover {
+  color: #AED1FF;
+}
+.second-topbar ul {
+  font-size: 0;
+  margin-bottom: -24.3px;
+}
+.second-topbar ul li {
+  font-size: 1rem;
+}
+
+/************ Theme / Objects / INFIELD LABEL JS ***********/
+/*https://github.com/ten1seven/infieldLabel/blob/master/jquery.infieldLabel.css */
+/* infieldLabel styles */
+.infield-label {
+  display: block;
+  position: relative;
+}
+
+.infield-label label {
+  display: block;
+  margin: 0 0.25em;
+  color: #999999;
+  position: absolute;
+}
+
+.js .infield-label label {
+  cursor: text;
+  position: absolute;
+  white-space: nowrap;
+  padding: 0.25em;
+  z-index: 20;
+}
+
+.placeholder-focus label {
+  background-color: #7BA1FF;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  bottom: auto;
+  color: white;
+  right: auto;
+  top: -1.5em;
+  top: -2em;
+  padding: 0.25em;
+  transition: 0.3s;
+}
+
+.no-rgba .placeholder-focus label {
+  background-color: #111;
+}
+
+.placeholder-focus label:after {
+  border-top: 5px solid #7BA1FF;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  bottom: -5px;
+  content: '';
+  display: block;
+  height: 0;
+  left: 10px;
+  position: absolute;
+}
+
+.no-rgba .placeholder-focus label:after {
+  border-top-color: #111;
+}
+
+.infield-label-image.placeholder-focus label {
+  top: -122px;
+}
+
+.placeholder-hide label {
+  bottom: auto;
+  left: -9999px;
+  right: auto;
+  top: -9999px;
+}
+
+/*-----------------  Theme / THEME -------------------*/
+/********************  Theme / LAYOUT  ******************/
+/********************  Theme / Style / HTML ELEMENTS  ******************/
+/********************  Theme / Style / LISTS  ******************/
+/************ Theme / Objects / TOPBAR *************/
+.topbar, .second-topbar {
+  padding-left: 286px;
+}
+
+.second-topbar .menu-sample-menu ul li {
+  color: white;
+}
+.second-topbar .menu-sample-menu ul li a {
+  color: white;
+}
+.second-topbar .menu-sample-menu ul li a:hover {
+  color: #AED1FF;
+}
+.second-topbar .menu-sample-menu .menu-item-has-children ul {
+  background-color: #E6E6E6;
+  color: black;
+}
+.second-topbar .menu-sample-menu .menu-item-has-children ul li {
+  color: black;
+}
+.second-topbar .menu-sample-menu .menu-item-has-children ul li a {
+  color: #8A8C8E;
+}
+.second-topbar .menu-sample-menu .menu-item-has-children ul li a:hover {
+  color: #7BA1FF;
+}
+.second-topbar .widget-1 {
+  width: 83.33333%;
+}
+.second-topbar .widget-2 {
+  width: 16.66667%;
+}
+
+/*************** HEADER ***************/
+.header__site-info {
+  position: absolute;
+  z-index: 999999;
+  margin-left: 1.35em;
+  height: 4rem;
+  margin-top: -4rem;
+}
+@media (min-width: 1101px) {
+  .header__site-info {
+    margin-left: 10%;
+  }
+}
+
+.header__logo {
+  height: 100%;
+  width: auto;
+}
+
+/************ Theme / Objects / SEARCH *************/
+/*
+.search-box {
+	border: thin solid $dark-grey;
+	max-width: 30em;
+	.searchform__input {
+		width: 95%;
+		padding: 0.25em;
+		margin: 0;	
+		max-width: 100%;
+	}
+}
+
+.error .search-box {
+	border: 0;
+	i {
+		margin-left: -1.5em;
+	}
+}
+
+.search-again {
+	clear: both;
+	.search-box {
+		border: 0;
+	}
+}
+*/
+.searchform-input-wrapper {
+  color: #999999;
+}
+
+/*@import "compass/utilities/sprites";
+@import "icon/*.png";
+@include all-icon-sprites; */
+
+/*# sourceMappingURL=style.css.map */
